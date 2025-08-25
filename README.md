@@ -21,5 +21,5 @@ Users can sign up, log in, and send/receive messages instantly.
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/sangithakondapalli/chat-app.git
+cd chat-app
