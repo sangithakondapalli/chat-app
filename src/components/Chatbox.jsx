@@ -631,6 +631,7 @@ function Chatbox({ selectedUser }) {
 
 export default Chatbox;*/
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import { RxCross2 } from "react-icons/rx";
 import formatTimestamp from "../utils/formatTimestamp";
 import { RiSendPlaneFill } from "react-icons/ri";
 import defaultavatar from "../../public/assets/default.jpg";
@@ -838,14 +839,14 @@ function Chatbox({ selectedUser}) {
               <img
                 src={URL.createObjectURL(selectedImage)}
                 alt="preview"
-                className="h-32 w-32 object-cover rounded-lg"
+                className="h-19 w-19 object-cover rounded-lg"
               />
               <button
                 type="button"
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
               >
-                ✖
+                <RxCross2 className="text-sm text-white" />
               </button>
             </div>
           )}
