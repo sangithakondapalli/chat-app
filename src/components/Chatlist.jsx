@@ -128,8 +128,8 @@ import { listenForChats } from "../firebase/firebase";
 import { auth, db } from "../firebase/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import defaultAvatar from "../../public/assets/default.jpg";
-
-function Chatlist({ setSelectedUser }) {
+import useIsMobile from "../utils/Ismobile.js"
+function Chatlist({ setSelectedUser}) {
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -154,11 +154,11 @@ function Chatlist({ setSelectedUser }) {
   const sortedChats = useMemo(() => {
     return [...chats].sort((a, b) => {
       const aTimestamp =
-        a.lastMessageTimestamp?.seconds +
-        a.lastMessageTimestamp?.nanoseconds / 1e9;
+        a?.lastMessageTimestamp?.seconds +
+        a?.lastMessageTimestamp?.nanoseconds / 1e9;
       const bTimestamp =
-        b.lastMessageTimestamp?.seconds +
-        b.lastMessageTimestamp?.nanoseconds / 1e9;
+        b?.lastMessageTimestamp?.seconds +
+        b?.lastMessageTimestamp?.nanoseconds / 1e9;
 
       return bTimestamp - aTimestamp;
     });
@@ -166,12 +166,13 @@ function Chatlist({ setSelectedUser }) {
 
   const startChat = (user) => {
     setSelectedUser(user);
+    
   };
 
   return (
     <section className="relative h-[100vh] hidden lg:flex flex-col items-start justify-start bg-white w-full md:w-[600px]">
       {/* Header */}
-      <header className="flex items-center justify-between w-full border-b border-[#898989b9] p-4 sticky md:static top-0 z-[100]">
+      <header className="flex items-center justify-between w-full border-b border-r border-[#898989b9] p-4 sticky md:static top-0 z-[100]">
         <main className="flex items-center gap-3">
           <img
             src="/assets/default.jpg"
@@ -222,7 +223,11 @@ function Chatlist({ setSelectedUser }) {
                       {chatUser?.fullName || "ChatFrik User"}
                     </h2>
                     <p className="font-light text-[#2A3d39] text-[14px] truncate max-w-[200px]">
-                      {chat?.lastMessage}
+                      {chat?.lastMessage?.text
+                        ? chat.lastMessage.text // show text if available
+                        : chat?.lastMessage?.imageUrl
+                        ? "📷 Photo" // fallback text when image exists
+                        : "No messages yet"}
                     </p>
                   </span>
                 </div>
@@ -240,4 +245,3 @@ function Chatlist({ setSelectedUser }) {
 }
 
 export default Chatlist;
-

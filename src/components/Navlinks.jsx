@@ -122,39 +122,42 @@ function Navlinks() {
                    flex-1 gap-6 lg:gap-8 px-4 lg:px-0 py-2"
       >
         <li>
-          <button className="text-[22px] lg:text-[28px]">
+          <button className="text-[22px] lg:text-[28px] cursor-pointer hover:scale-105 shadow-lg">
             <RiChatAiLine color="#fff" />
           </button>
         </li>
         <li>
-          <button className="text-[22px] lg:text-[28px]">
+          <button className="text-[22px] lg:text-[28px] cursor-pointer hover:scale-105 shadow-lg">
             <RiFolderUserLine color="#fff" />
           </button>
         </li>
         <li>
-          <button className="text-[22px] lg:text-[28px]">
+          <button className="text-[22px] lg:text-[28px] cursor-pointer hover:scale-105 shadow-lg">
             <RiNotificationLine color="#fff" />
           </button>
         </li>
         <li>
-          <button className="text-[22px] lg:text-[28px]">
+          <button className="text-[22px] lg:text-[28px] cursor-pointer hover:scale-105 shadow-lg">
             <RiFile4Line color="#fff" />
           </button>
         </li>
         <li>
-          <button className="text-[22px] lg:text-[28px]">
+          <button className="text-[22px] lg:text-[28px] cursor-pointer hover:scale-105 shadow-lg">
             <RiBardLine color="#fff" />
           </button>
         </li>
       </ul>
 
       {/* Logout (always visible, moves bottom on lg) */}
-      <div className="flex justify-center items-center py-2 lg:py-4">
+      <div className="flex flex-col justify-center items-center py-2 lg:py-4">
         <button
           onClick={handleLogout}
-          className="text-[22px] lg:text-[28px] cursor-pointer"
+          className="flex flex-col items-center cursor-pointer group hover:scale-105 shadow-lg"
         >
-          <RiShutDownLine color="#fff" />
+          <RiShutDownLine className="text-[22px] lg:text-[28px] text-white group-hover:text-green-100" />
+          <p className="text-green-300 font-semibold group-hover:text-green-100">
+            LogOut
+          </p>
         </button>
       </div>
     </nav>
